@@ -1,0 +1,61 @@
+<Window x:Class="Vatgram.Tray.Windows.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+        Title="About vatGram"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="False"
+        Background="Transparent"
+        Width="440" Height="560"
+        WindowStartupLocation="CenterScreen">
+
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome CaptionHeight="36" ResizeBorderThickness="0" GlassFrameThickness="0" UseAeroCaptionButtons="False"/>
+    </shell:WindowChrome.WindowChrome>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource TitleBarRow}"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title bar -->
+        <Grid Grid.Row="0" Background="{DynamicResource BgPrimary}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text=" " VerticalAlignment="Center" Margin="16,0,0,0"/>
+            <Button Grid.Column="1" Style="{StaticResource WindowCloseButton}" Content="&#xE8BB;" Click="OnClose"/>
+        </Grid>
+
+        <!-- Body -->
+        <Border Grid.Row="1" Background="{DynamicResource BgPrimary}" Padding="0,16,0,0">
+            <StackPanel HorizontalAlignment="Center">
+                <Image x:Name="LogoImage" Width="80" Height="80" Margin="0,16,0,0"/>
+                <TextBlock Text="vatGram" Style="{StaticResource TextDisplay}" Margin="0,16,0,4" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="VersionLabel" Style="{StaticResource TextSmall}" HorizontalAlignment="Center"/>
+                <TextBlock Text="vPilot ↔ Telegram bridge for VATSIM" Style="{StaticResource TextBodyMuted}" Margin="0,12,0,0" HorizontalAlignment="Center"/>
+
+                <Border Background="{DynamicResource BgSecondary}" CornerRadius="12" Padding="14,12" Margin="32,24,32,12" Width="360">
+                    <StackPanel x:Name="StatusList"/>
+                </Border>
+
+                <Button Content="OK" Style="{StaticResource ButtonPrimary}" Width="120" HorizontalAlignment="Center" Click="OnClose" Margin="0,4,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Footer credit -->
+        <Border Grid.Row="2" Background="{DynamicResource BgPrimary}" Padding="0,12,0,16">
+            <TextBlock Style="{StaticResource TextSmall}" HorizontalAlignment="Center"
+                       Foreground="{DynamicResource TextTertiary}">
+                <Run Text="Made with ♥ by "/><Hyperlink NavigateUri="https://flywithpascal.com"
+                                                       RequestNavigate="OnLinkNavigate"
+                                                       Foreground="{DynamicResource AccentPrimary}"
+                                                       TextDecorations="None">flywithpascal.com</Hyperlink><Run Text=" in Switzerland 🇨🇭"/>
+            </TextBlock>
+        </Border>
+    </Grid>
+</Window>

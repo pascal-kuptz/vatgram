@@ -1,0 +1,93 @@
+<Window x:Class="Vatgram.Tray.Windows.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+        Title="vatGram – Settings"
+        WindowStyle="None"
+        ResizeMode="CanResize"
+        AllowsTransparency="False"
+        Background="Transparent"
+        Width="900" Height="640"
+        MinWidth="780" MinHeight="540"
+        WindowStartupLocation="CenterScreen"
+        UseLayoutRounding="True"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="ClearType">
+
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome CaptionHeight="36"
+                            ResizeBorderThickness="6"
+                            GlassFrameThickness="0"
+                            CornerRadius="0"
+                            UseAeroCaptionButtons="False"/>
+    </shell:WindowChrome.WindowChrome>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource TitleBarRow}"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="64"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title bar -->
+        <Grid Grid.Row="0" Background="{DynamicResource BgPrimary}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="16,0,0,0">
+                <Ellipse Width="8" Height="8" Fill="{DynamicResource AccentPrimary}"/>
+                <TextBlock Text="vatGram" Style="{StaticResource TextBody}" FontWeight="SemiBold" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                <TextBlock Text=" – Settings" Style="{StaticResource TextBodyMuted}" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button Style="{StaticResource WindowControlButton}" Content="&#xE921;" Click="OnMinimize"/>
+                <Button Style="{StaticResource WindowCloseButton}" Content="&#xE8BB;" Click="OnClose"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Body -->
+        <Grid Grid.Row="1" Background="{DynamicResource BgPrimary}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Sidebar -->
+            <Border Grid.Column="0" Background="{DynamicResource BgSecondary}">
+                <StackPanel>
+                    <Grid Margin="20,18,20,28">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image x:Name="LogoImage" Width="36" Height="36" Margin="0,0,12,0"/>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="vatGram" Style="{StaticResource TextH2}"/>
+                            <TextBlock Text="Bridge" Style="{StaticResource TextSmall}"/>
+                        </StackPanel>
+                    </Grid>
+                    <StackPanel x:Name="NavList" Margin="8,0">
+                        <!-- Filled in code-behind for active-state behavior -->
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Section content -->
+            <ScrollViewer Grid.Column="1" Padding="40,32,40,16" VerticalScrollBarVisibility="Auto">
+                <Grid x:Name="SectionHost"/>
+            </ScrollViewer>
+        </Grid>
+
+        <!-- Footer -->
+        <Border Grid.Row="2" Background="{DynamicResource BgSecondary}" BorderBrush="{DynamicResource BorderSubtle}" BorderThickness="0,1,0,0">
+            <Grid Margin="20,0">
+                <TextBlock x:Name="FooterStatus" Style="{StaticResource TextSmall}" VerticalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button Content="Save" Style="{StaticResource ButtonPrimary}" Width="120" Margin="0,0,8,0" Click="OnSave"/>
+                    <Button Content="Close" Style="{StaticResource ButtonSecondary}" Width="100" Click="OnClose"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

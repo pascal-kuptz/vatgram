@@ -1,0 +1,133 @@
+<Window x:Class="Vatgram.Tray.Windows.OnboardingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+        Title="vatGram – Setup"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="False"
+        Background="Transparent"
+        Width="860" Height="600"
+        WindowStartupLocation="CenterScreen"
+        UseLayoutRounding="True"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="ClearType">
+
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome CaptionHeight="36"
+                            ResizeBorderThickness="0"
+                            GlassFrameThickness="0"
+                            CornerRadius="0"
+                            UseAeroCaptionButtons="False"/>
+    </shell:WindowChrome.WindowChrome>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource TitleBarRow}"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="64"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title bar -->
+        <Grid Grid.Row="0" Background="{DynamicResource BgPrimary}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="16,0,0,0">
+                <Ellipse Width="8" Height="8" Fill="{DynamicResource AccentPrimary}"/>
+                <TextBlock Text="vatGram" Style="{StaticResource TextBody}" FontWeight="SemiBold" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                <TextBlock Text=" – Setup" Style="{StaticResource TextBodyMuted}" Margin="0" VerticalAlignment="Center"/>
+            </StackPanel>
+            <Button Grid.Column="1" Style="{StaticResource WindowCloseButton}" Content="&#xE8BB;" Click="OnClose"/>
+        </Grid>
+
+        <!-- Content -->
+        <Grid Grid.Row="1" Background="{DynamicResource BgPrimary}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="260"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Left: brand panel -->
+            <StackPanel Grid.Column="0" Background="{DynamicResource BgSecondary}" HorizontalAlignment="Stretch">
+                <Image x:Name="LogoImage" Width="80" Height="80" Margin="0,72,0,0" HorizontalAlignment="Center"/>
+                <TextBlock Text="vatGram" Style="{StaticResource TextDisplay}" HorizontalAlignment="Center" Margin="0,16,0,0"/>
+                <TextBlock Text="First-time setup" Style="{StaticResource TextSmall}" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,32,0,0">
+                    <Ellipse x:Name="Dot1" Width="10" Height="10" Margin="0,0,10,0" Fill="{DynamicResource AccentPrimary}"/>
+                    <Ellipse x:Name="Dot2" Width="10" Height="10" Margin="0,0,10,0" Fill="{DynamicResource BorderStrong}"/>
+                    <Ellipse x:Name="Dot3" Width="10" Height="10" Fill="{DynamicResource BorderStrong}"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Right: panels stacked, animated transitions -->
+            <Grid Grid.Column="1" Margin="56,40,56,8" ClipToBounds="True">
+
+                <Grid x:Name="Step1">
+                    <Grid.RenderTransform><TranslateTransform/></Grid.RenderTransform>
+                    <StackPanel>
+                        <TextBlock Text="Welcome to vatGram" Style="{StaticResource TextDisplay}"/>
+                        <TextBlock Style="{StaticResource TextBody}" Margin="0,16,0,0" TextWrapping="Wrap" Foreground="{DynamicResource TextSecondary}">
+                            vatGram bridges vPilot ↔ Telegram. Get pinged on your phone when controllers or pilots message you in vPilot, and reply right from Telegram.
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource TextBody}" Margin="0,24,0,0" Foreground="{DynamicResource TextSecondary}">This 3-step wizard will:</TextBlock>
+                        <TextBlock Style="{StaticResource TextBody}" Margin="0,12,0,0" Foreground="{DynamicResource TextSecondary}">
+                            1.  Walk you through creating your own Telegram bot
+                            <LineBreak/>
+                            2.  Have you paste the bot token
+                            <LineBreak/>
+                            3.  Bind your Telegram chat by sending /start to your bot
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource TextBody}" Margin="0,24,0,0" Foreground="{DynamicResource TextSecondary}">Takes about 60 seconds.</TextBlock>
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="Step2" Visibility="Collapsed">
+                    <Grid.RenderTransform><TranslateTransform/></Grid.RenderTransform>
+                    <StackPanel>
+                        <TextBlock Text="Create your bot" Style="{StaticResource TextDisplay}"/>
+                        <TextBlock Style="{StaticResource TextBody}" Margin="0,16,0,0" Foreground="{DynamicResource TextSecondary}">
+                            1.  Open Telegram, search for <Run FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}">@BotFather</Run>, start a chat.
+                            <LineBreak/>
+                            2.  Send  <Run FontFamily="{DynamicResource FontMono}" FontWeight="Medium" Foreground="{DynamicResource TextPrimary}">/newbot</Run>
+                            <LineBreak/>
+                            3.  Pick a name and a username (must end with <Run FontFamily="{DynamicResource FontMono}" FontWeight="Medium" Foreground="{DynamicResource TextPrimary}">bot</Run>).
+                            <LineBreak/>
+                            4.  BotFather replies with an HTTP API token. Copy it and paste below.
+                        </TextBlock>
+                        <TextBlock Text="Bot token" Style="{StaticResource TextSmall}" Margin="0,32,0,8"/>
+                        <PasswordBox x:Name="TokenBox"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="Step3" Visibility="Collapsed">
+                    <Grid.RenderTransform><TranslateTransform/></Grid.RenderTransform>
+                    <StackPanel>
+                        <TextBlock Text="Bind your chat" Style="{StaticResource TextDisplay}"/>
+                        <TextBlock Style="{StaticResource TextBody}" Margin="0,16,0,0" Foreground="{DynamicResource TextSecondary}">
+                            1.  Open Telegram and find the bot you just created.
+                            <LineBreak/>
+                            2.  Tap <Run FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}">Start</Run> (or send <Run FontFamily="{DynamicResource FontMono}" FontWeight="Medium" Foreground="{DynamicResource TextPrimary}">/start</Run>).
+                            <LineBreak/><LineBreak/>
+                            vatGram listens for the first /start and binds your chat as the destination.
+                        </TextBlock>
+                        <TextBlock x:Name="Step3Status" Style="{StaticResource TextBody}" Margin="0,32,0,0" Text="Waiting for /start..."/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!-- Footer -->
+        <Border Grid.Row="2" Background="{DynamicResource BgSecondary}" BorderBrush="{DynamicResource BorderSubtle}" BorderThickness="0,1,0,0">
+            <Grid Margin="20,0,20,0">
+                <TextBlock x:Name="StepIndicator" Text="Step 1 of 3" Style="{StaticResource TextSmall}" VerticalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button x:Name="BackBtn" Content="Back" Style="{StaticResource ButtonSecondary}" Width="96" Margin="0,0,8,0" Click="OnBack"/>
+                    <Button x:Name="NextBtn" Content="Next" Style="{StaticResource ButtonPrimary}" Width="120" Margin="0,0,8,0" Click="OnNext"/>
+                    <Button Content="Cancel" Style="{StaticResource ButtonSecondary}" Width="96" Click="OnClose"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

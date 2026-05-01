@@ -1,0 +1,29 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+
+    <!-- Backgrounds (low → high) -->
+    <SolidColorBrush x:Key="BgPrimary"     Color="#0A0A0B" po:Freeze="True"/>
+    <SolidColorBrush x:Key="BgSecondary"   Color="#131316" po:Freeze="True"/>
+    <SolidColorBrush x:Key="BgTertiary"    Color="#1C1C21" po:Freeze="True"/>
+
+    <!-- Borders -->
+    <SolidColorBrush x:Key="BorderSubtle"  Color="#26262C" po:Freeze="True"/>
+    <SolidColorBrush x:Key="BorderStrong"  Color="#34343C" po:Freeze="True"/>
+
+    <!-- Text -->
+    <SolidColorBrush x:Key="TextPrimary"   Color="#F5F5F7" po:Freeze="True"/>
+    <SolidColorBrush x:Key="TextSecondary" Color="#A1A1AA" po:Freeze="True"/>
+    <SolidColorBrush x:Key="TextTertiary"  Color="#6B6B73" po:Freeze="True"/>
+
+    <!-- Accent (Telegram-ish blue) -->
+    <SolidColorBrush x:Key="AccentPrimary" Color="#38A3F0" po:Freeze="True"/>
+    <SolidColorBrush x:Key="AccentHover"   Color="#50B4FF" po:Freeze="True"/>
+    <SolidColorBrush x:Key="AccentGlow"    Color="#3338A3F0" po:Freeze="True"/>
+
+    <!-- Status -->
+    <SolidColorBrush x:Key="StatusActive"  Color="#00D4AA" po:Freeze="True"/>
+    <SolidColorBrush x:Key="StatusIdle"    Color="#6B6B73" po:Freeze="True"/>
+    <SolidColorBrush x:Key="StatusWarning" Color="#FFB547" po:Freeze="True"/>
+    <SolidColorBrush x:Key="StatusError"   Color="#FF5470" po:Freeze="True"/>
+</ResourceDictionary>

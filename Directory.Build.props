@@ -1,0 +1,20 @@
+<Project>
+  <PropertyGroup>
+    <!-- Path to your vPilot install. Override here if vPilot is elsewhere. -->
+    <VPilotPath Condition="'$(VPilotPath)' == ''">D:\Microsoft Flight Simulator 2024 Utilities\vPilot</VPilotPath>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <!-- Production privacy: no PDBs, no embedded source paths.
+       MSBuild's default Release build embeds the absolute PDB path into every DLL's
+       debug directory, leaking the dev's local file structure (and username) to anyone
+       who runs `strings` over the DLL. We strip it for Release; Debug keeps full PDBs. -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <Deterministic>true</Deterministic>
+    <PathMap>$(MSBuildThisFileDirectory)=./</PathMap>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,31 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+
+    <!-- 8px grid -->
+    <sys:Double x:Key="Space1">4</sys:Double>
+    <sys:Double x:Key="Space2">8</sys:Double>
+    <sys:Double x:Key="Space3">12</sys:Double>
+    <sys:Double x:Key="Space4">16</sys:Double>
+    <sys:Double x:Key="Space5">20</sys:Double>
+    <sys:Double x:Key="Space6">24</sys:Double>
+    <sys:Double x:Key="Space8">32</sys:Double>
+    <sys:Double x:Key="Space10">40</sys:Double>
+    <sys:Double x:Key="Space12">48</sys:Double>
+
+    <!-- Radii -->
+    <CornerRadius x:Key="RadiusButton">8</CornerRadius>
+    <CornerRadius x:Key="RadiusInput">8</CornerRadius>
+    <CornerRadius x:Key="RadiusCard">12</CornerRadius>
+    <CornerRadius x:Key="RadiusModal">16</CornerRadius>
+    <CornerRadius x:Key="RadiusTrayPopup">14</CornerRadius>
+
+    <!-- Heights -->
+    <sys:Double x:Key="ControlHeight">36</sys:Double>
+    <sys:Double x:Key="TitleBarHeight">36</sys:Double>
+    <sys:Double x:Key="SidebarWidth">200</sys:Double>
+
+    <!-- GridLength variants for RowDefinition.Height / ColumnDefinition.Width -->
+    <GridLength x:Key="TitleBarRow">36</GridLength>
+    <GridLength x:Key="SidebarColumn">200</GridLength>
+</ResourceDictionary>

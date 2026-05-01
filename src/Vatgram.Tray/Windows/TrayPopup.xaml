@@ -1,0 +1,72 @@
+<UserControl x:Class="Vatgram.Tray.Windows.TrayPopup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Width="320">
+    <Border Background="{DynamicResource BgSecondary}"
+            BorderBrush="{DynamicResource BorderSubtle}"
+            BorderThickness="1"
+            CornerRadius="{StaticResource RadiusTrayPopup}"
+            Padding="6"
+            Effect="{StaticResource ShadowTrayPopup}">
+        <StackPanel>
+            <!-- Brand row -->
+            <Grid Margin="6,8,6,12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="LogoImage" Width="28" Height="28" Margin="0,0,12,0"/>
+                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <TextBlock Text="vatGram" Style="{StaticResource TextH2}"/>
+                    <TextBlock Text="vPilot ↔ Telegram" Style="{StaticResource TextSmall}"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Status rows -->
+            <Border Background="{DynamicResource BgTertiary}" CornerRadius="8" Padding="10,8" Margin="0,0,0,6">
+                <StackPanel>
+                    <Grid Margin="0,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Ellipse x:Name="DotTelegram" Width="9" Height="9" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="Telegram" Style="{StaticResource TextBody}" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="StateTelegram" Grid.Column="2" Style="{StaticResource TextSmall}" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Ellipse x:Name="DotVPilot" Width="9" Height="9" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="vPilot" Style="{StaticResource TextBody}" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="StateVPilot" Grid.Column="2" Style="{StaticResource TextSmall}" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Ellipse x:Name="DotSim" Width="9" Height="9" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="MSFS" Style="{StaticResource TextBody}" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="StateSim" Grid.Column="2" Style="{StaticResource TextSmall}" VerticalAlignment="Center"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!-- Menu items -->
+            <Button x:Name="BtnPause" Content="Pause notifications" Style="{StaticResource ButtonGhost}" Click="OnPauseClick"/>
+            <Border Height="1" Background="{DynamicResource BorderSubtle}" Margin="6,4"/>
+            <Button Content="Settings…" Style="{StaticResource ButtonGhost}" Click="OnSettingsClick"/>
+            <Button Content="Run setup wizard" Style="{StaticResource ButtonGhost}" Click="OnSetupClick"/>
+            <Button Content="Open log folder" Style="{StaticResource ButtonGhost}" Click="OnLogsClick"/>
+            <Border Height="1" Background="{DynamicResource BorderSubtle}" Margin="6,4"/>
+            <Button Content="About vatgram" Style="{StaticResource ButtonGhost}" Click="OnAboutClick"/>
+            <Button Content="Quit" Style="{StaticResource ButtonDestructive}" Click="OnExitClick"/>
+        </StackPanel>
+    </Border>
+</UserControl>

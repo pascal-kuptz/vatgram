@@ -1,0 +1,19 @@
+# Build output
+bin/
+obj/
+.vs/
+*.user
+*.suo
+publish/
+artifacts/
+
+# Installer build artifacts (zip + setup.exe)
+installer/setup/
+
+# Internal / dev-only
+_source/
+.claude/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
